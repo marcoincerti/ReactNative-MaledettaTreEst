@@ -7,7 +7,7 @@ import Post from '../Post';
 import PostWriter from '../PostWriter';
 
 class BachecaDue extends React.Component {
-
+    _isMounted = false;
     state = {
         postWriterVisible: false,
         jsonPost: null,
@@ -55,15 +55,19 @@ class BachecaDue extends React.Component {
         this.retrievePosts(this.state.did);
     }
 
-
     componentDidMount() {
+        //this._isMounted = true;
         this.state.line = this.props.route.params.line;
         this.state.direction = this.props.route.params.direction;
         this.state.sid = this.props.route.params.sid;
         this.state.did = this.props.route.params.direction.did;
 
-        console.log("retrieve posts");
+        //console.log("retrieve posts");
         this.retrievePosts(this.state.did);
+    }
+
+    componentWillUnmount() {
+        //this._isMounted = false;
     }
 
     renderSeparator = () => (
@@ -75,17 +79,7 @@ class BachecaDue extends React.Component {
         />
     );
 
-    header = () => (
-        <View>
-            <Text style={this.styles.title}>{this.state.line.terminus1.sname + "\n" + this.state.line.terminus2.sname}</Text>
-            <Text style={this.styles.subTitle}>Direzione {this.state.direction.sname}</Text>
-            <Button title="Nuovo post" onPress={() => this.showPostWriter()}></Button>
-        </View>
-    )
-
-
     render() {
-
         if (!this.state.postWriterVisible && this.state.jsonPost != null) {
             return (
                 <SafeAreaView>
@@ -101,6 +95,7 @@ class BachecaDue extends React.Component {
                                     <Text style={this.styles.subTitle}>Direzione {this.state.direction.sname}</Text>
                                     <Button title="Cambia direzione" onPress={() => this.changeDirection()}></Button>
                                     <Button title="Nuovo post" onPress={() => this.showPostWriter()}></Button>
+                                    <Button title="Aggiorna" onPress={() => this.retrievePosts(this.state.did)}></Button>
                                 </View>
                             )}
                         />

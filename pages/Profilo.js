@@ -89,7 +89,7 @@ class Profilo extends React.Component {
             }else{
                 return (
                     <SafeAreaView>
-                        <View style={this.styles.container}>
+                        <View >
                             <Image style={{ width: 150, height: 150 }} source={require('../assets/icon.png')} />
     
                             <Text>Il tuo nickname: {this.state.jsonData.name}</Text>

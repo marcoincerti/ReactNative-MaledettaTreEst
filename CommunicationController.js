@@ -2,7 +2,7 @@ export default class CommunicationController {
     static BASE_URL = "https://ewserver.di.unimi.it/mobicomp/treest/"
 
     static async treestRequest(endpoint, parameters) {
-        console.log("sending request to: " + endpoint);
+        //console.log("sending request to: " + endpoint);
         const url = this.BASE_URL + endpoint;
         let httpResponse = await fetch(url, {
             method: 'POST',

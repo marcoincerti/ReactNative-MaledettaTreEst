@@ -5,6 +5,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 class PostWriter extends React.Component {
+    _isMounted = false;
     state = {
         delay: "0",
         status: "0",
@@ -57,6 +58,16 @@ class PostWriter extends React.Component {
                 console.log(error);
                 this.showAlertInternet();
               });
+    }
+
+    componentDidMount() {
+        this._isMounted = true;
+
+        this.getData();
+    }
+
+    componentWillUnmount() {
+        this._isMounted = false;
     }
 
     onEnterText = (text) => {
@@ -114,7 +125,6 @@ class PostWriter extends React.Component {
     }
 
     render() {
-        this.getData();
         return (
             <SafeAreaView>
                 <TextInput
