@@ -58,6 +58,10 @@ class UserWriter extends React.Component {
         )
     }
 
+    setName = (value) => {
+        this.state.name = value
+    }
+
 
     updateUser = () => {
         this.setState({ errorStatus: true, caricamento: true });
@@ -109,7 +113,7 @@ class UserWriter extends React.Component {
                 <Text style={this.styles.subTitle}>Inserisci il nuovo nome:</Text>
                 <TextInput
                     style={this.styles.input}
-                    onChangeText={val => this.setDelay(val)}
+                    onChangeText={val => this.setName(val)}
                     placeholder={this.state.name}
                     clearButtonMode="while-editing"
                     onChangeText={text => this.onEnterText(text)}

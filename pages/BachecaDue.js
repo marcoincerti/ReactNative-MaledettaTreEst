@@ -5,6 +5,7 @@ import { Button, Text, StyleSheet, SafeAreaView, ScrollView, FlatList, View, Act
 import CommunicationController from '../CommunicationController';
 import Post from '../Post';
 import PostWriter from '../PostWriter';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 class BachecaDue extends React.Component {
     _isMounted = false;
@@ -30,6 +31,7 @@ class BachecaDue extends React.Component {
                 //console.log("response " + response)
                 this.state.jsonPost = response.posts
                 this.setState(this.state)
+                this.updateLastBacheca();
             })
             .catch(error => {
                 console.log(error);
@@ -54,6 +56,12 @@ class BachecaDue extends React.Component {
         this.setState(this.state)
         this.retrievePosts(this.state.did);
     }
+
+    async updateLastBacheca() {
+        console.log(this.line);
+        await AsyncStorage.setItem("line",  JSON.stringify(this.state.line));
+        await AsyncStorage.setItem("direction", JSON.stringify(this.state.direction));
+      }
 
     componentDidMount() {
         //this._isMounted = true;

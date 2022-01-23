@@ -36,13 +36,27 @@ class BachecaUno extends React.Component {
       }).catch(error => {
         console.log(error);
         this.showAlert();
-    });
+      });
       this.state.sid = sid;
       this.setState(this.state);
       await AsyncStorage.setItem("sid", sid);
       await AsyncStorage.setItem("second_run", "true");
     }
     return secondRun === "true"
+  }
+
+  async checkBacheca() {
+    const line = await AsyncStorage.getItem("line");
+    //console.log(line);
+    if (line !== null) {
+      try {
+        const direction = await AsyncStorage.getItem("direction");
+        this.handleSelection(JSON.parse(line), JSON.parse(direction), true);
+        console.log("Dovrebbe funzionare")
+      } catch (error) {
+        console.log(error)
+      }
+    }
   }
 
   getData = async () => {
@@ -57,6 +71,8 @@ class BachecaUno extends React.Component {
           .then(unmarshalledObj => {
             this.state.jsonData = unmarshalledObj.lines;
             this.setState(this.state);
+            this.checkBacheca();
+            console.log("ciaoooooo");
           })
           .catch(error => {
             console.log(error);

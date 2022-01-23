@@ -4,6 +4,7 @@ import CommunicationController from './CommunicationController';
 import StorageManager from './StorageManager';
 
 class Post extends React.Component {
+    isMounted = false;
 
     state = {
         base64Icon: 'data:image/png;base64,',
@@ -12,6 +13,7 @@ class Post extends React.Component {
     }
 
     componentDidMount() {
+        //this._isMounted = true;
         const sm = new StorageManager();
         let d = this.props.data.item
         this.setState({sid: this.props.sid, followingAuthor: d.followingAuthor});
@@ -32,6 +34,10 @@ class Post extends React.Component {
                 }
             },
             error => console.log("error", error))
+    }
+
+    componentWillUnmount() {
+        //this._isMounted = false;
     }
 
     follow = (uid, bool) => {
