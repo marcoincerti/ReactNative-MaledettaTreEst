@@ -1,12 +1,12 @@
 {
   "expo": {
-    "name": "EsameMobiDEv",
-    "slug": "EsameMobiDEv",
+    "name": "Maledetta_TreEst_CP",
+    "slug": "Maledetta_TreEst_CP",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/logo.png",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/my-splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -17,21 +17,14 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true,
-      "config": {
-        "googleMapsApiKey": "AIzaSyC3C_GNnYPUWq6aDm-giK7d_Lv8OhhVLlQ" 
-      }
+      "supportsTablet": true
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/logo.png",
         "backgroundColor": "#FFFFFF"
       },
-     "config": {
-       "googleMaps": {
-         "apiKey": "AIzaSyC3C_GNnYPUWq6aDm-giK7d_Lv8OhhVLlQ"
-       }
-     }
+      "package": "com.maledettatreestcp"
     },
     "web": {
       "favicon": "./assets/favicon.png"
